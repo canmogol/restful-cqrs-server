@@ -21,19 +21,19 @@ public class CityQueryResource {
 
     @GET
     @Path("/findById/{id}")
-    CityDTO findById(@PathParam("id") Integer id) {
+    public CityDTO findById(@PathParam("id") Integer id) {
         return cityServiceEngine.findById(id);
     }
 
     @GET
     @Path("/list/{index}/{numberOfRecords}")
-    CityListDTO list(Integer index, Integer numberOfRecords) {
+    public CityListDTO list(Integer index, Integer numberOfRecords) {
         return cityServiceEngine.list(index, numberOfRecords);
     }
 
     @GET
     @Path("/count")
-    Long count() {
+    public Long count() {
         return cityServiceEngine.count();
     }
 

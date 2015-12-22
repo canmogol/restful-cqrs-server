@@ -14,13 +14,18 @@
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.transaction.flush_before_completion" value="true"/>
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
             <property name="hibernate.default_schema" value="public"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="QueryPersistenceUnit" transaction-type="JTA">
         <!-- PostgresqlQueryDS data source and its user is read only, can only execute select queries -->
+        <!--
+        do not forget to let the query db user to connect and execute select queries on public schema
+        GRANT CONNECT ON DATABASE jpa TO QUERY_PU_USER_NAME;
+        GRANT USAGE ON SCHEMA public TO QUERY_PU_USER_NAME;
+        GRANT SELECT ON ALL TABLES IN SCHEMA public TO QUERY_PU_USER_NAME;
+        -->
         <jta-data-source>java:/PostgresqlQueryDS</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
@@ -29,7 +34,6 @@
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.transaction.flush_before_completion" value="true"/>
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
             <property name="hibernate.default_schema" value="public"/>
         </properties>

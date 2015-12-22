@@ -46,7 +46,7 @@
                             <linkAnyMediaTypeToXmlSchema>true</linkAnyMediaTypeToXmlSchema>
                             <classResourceNames/>
                             <basePackages>
-                                com.fererlab.query.city.restful.CityQueryResource
+                                com.fererlab.query.city.restful,com.fererlab.command.city.restful
                             </basePackages>
                             <docProvider>org.apache.cxf.maven_plugin.javatowadl.ResourceMapJavaDocProvider</docProvider>
                             <attachWadl>true</attachWadl>
